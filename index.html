@@ -68,7 +68,7 @@ $('toggle').onclick=()=>transmit(!talking);window.addEventListener('blur',()=>tr
 $('listen').onclick=()=>{$('remote').muted=false;if($('remote').srcObject)$('remote').play().catch(e=>note('Speaker: '+e.message));else note('Speaker available after pairing.')};$('reset').onclick=reset;
 $('send').onclick=()=>{const m=$('message').value.trim();if(!m||!ready()||channel?.readyState!=='open')return;try{channel.send(JSON.stringify({kind:'text',text:m}));note('Sent: '+m);$('message').value=''}catch(e){note('Send failed: '+e.message)}};
 if('serviceWorker'in navigator){navigator.serviceWorker.register('./sw.js').then(()=>navigator.serviceWorker.ready).then(()=>{$('cache').textContent='Offline cache ready — test reload without internet.'}).catch(e=>{$('cache').textContent='Offline cache unavailable: '+e.message})}else $('cache').textContent='Offline cache not supported in this browser.';
-const stationKey='airlink-station:'+location.pathname.replace(/index\\.html$/,'');
+const stationKey='airlink-station:'+location.pathname.replace(/index[.]html$/,'');
 function savedGet(k){try{return localStorage.getItem(stationKey+':'+k)||''}catch{return ''}}
 function savedSet(k,v){try{localStorage.setItem(stationKey+':'+k,v);return true}catch{return false}}
 let sosUntil=0,sosTimer=null,pendingSOS='',receivedSOS='';
