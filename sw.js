@@ -1,4 +1,4 @@
-const CACHE='rolyfe-airlink-layout-033';
+const CACHE='rolyfe-airlink-v034';
 const HOME=new URL('./index.html',self.location.href).href;
 const RECOVERY=new URL('./airlink-v02.html',self.location.href).href;
 const scopeHome=new URL('./',self.location.href).pathname;
